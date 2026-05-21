@@ -1,0 +1,21 @@
+From: Terry Greeniaus <terrygreeniaus@gmail.com>
+Subject: Fix function prototypes
+
+K&R-style empty parameter lists conflict with the later definitions
+under GCC 14+, which now warns/errors on prototype mismatches.
+
+Upstream commit f53bebd, adjusted to apply against 1.17.1.
+
+--- editline-1.17.1/examples/fileman.c.orig
++++ editline-1.17.1/examples/fileman.c
+@@ -61,8 +61,8 @@ struct cmd commands[] = {
+ };
+
+ /* Forward declarations. */
+-char *stripwhite();
+-struct cmd *find_command();
++char *stripwhite(char *string);
++struct cmd *find_command(char *name);
+
+ /* When non-zero, this means the user is done using this program. */
+ int done;

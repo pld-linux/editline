@@ -6,11 +6,12 @@ Summary:	Small line editing library without termcap/curses
 Summary(pl.UTF-8):	Mała biblioteka do edycji wiersza bez termcap/curses
 Name:		editline
 Version:	1.17.1
-Release:	1
+Release:	2
 License:	BSD
 Group:		Libraries
 Source0:	ftp://ftp.troglobit.com/editline/%{name}-%{version}.tar.xz
 # Source0-md5:	ec25530e02f0926909bd0f176528019e
+Patch0:		%{name}-prototypes.patch
 URL:		https://troglobit.com/projects/editline/
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
@@ -56,6 +57,7 @@ Statyczna biblioteka editline.
 
 %prep
 %setup -q
+%patch -P0 -p1
 
 %build
 %configure \
